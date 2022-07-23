@@ -104,15 +104,11 @@ corpo da requisição:
         "args": [
             {
                 "classLocation": "com.example.orch.domain.Compra",
-                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
-            },
-            {
-                "classLocation": "com.example.orch.domain.Compra",
-                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
-            },
-            {
-                "classLocation": "com.example.orch.domain.Compra",
-                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
+                "arg": [
+                    {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0},
+                    {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0},
+                    {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
+                ]
             }
         ]
     }
