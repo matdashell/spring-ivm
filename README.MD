@@ -95,7 +95,7 @@ corpo da requisição:
     }
 ```
 
-4. Requisição necessária para executar o método *processarCompra* :
+4. Requisição necessária para executar o método *processarCompras* :
 
 ```
     {
