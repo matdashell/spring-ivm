@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+inspect.invoke.ivm.factory.InvokeController,\
