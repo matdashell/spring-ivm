@@ -1,11 +1,11 @@
-package inspect.invoke.ivm.factory;
+package inspect.invoke.ivm.dto;
 
 import lombok.Data;
 
 @Data
 public class InvokeArg {
     private String classLocation;
-    private String arg;
+    private Object arg;
 
     public Class<?> getClassLocation() {
         try {

@@ -28,7 +28,7 @@ corpo da requisição:
         "args": [
             {
                 "classLocation": * package completo do objeto *,
-                "arg": * json que irá compor o objeto (em formato de String) *
+                "arg": * json que irá compor o objeto *
             }
         ]
     }
@@ -51,6 +51,10 @@ corpo da requisição:
     
         public void processarCompra(Compra compra) {
             producerTemplate.sendBody(PROCESSAR_COMPRA_ROUTE, compra);
+        }
+   
+        public void processarCompras(List<Compra> compras) {
+            producerTemplate.sendBody(PROCESSAR_COMPRA_ROUTE, compras);
         }
    
         public void settarValor(Compra compra, double valor) {
@@ -85,13 +89,36 @@ corpo da requisição:
         "args": [
             {
                 "classLocation": "com.example.orch.domain.Compra",
-                "arg": "{idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}"
+                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
             }
         ]
     }
 ```
 
-4. Requisição necessária para executar o método *start* :
+4. Requisição necessária para executar o método *processarCompra* :
+
+```
+    {
+        "classLocation": "com.example.orch.services.MyService",
+        "methodName": "processarCompras",
+        "args": [
+            {
+                "classLocation": "com.example.orch.domain.Compra",
+                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
+            },
+            {
+                "classLocation": "com.example.orch.domain.Compra",
+                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
+            },
+            {
+                "classLocation": "com.example.orch.domain.Compra",
+                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
+            }
+        ]
+    }
+```
+
+5. Requisição necessária para executar o método *start* :
 
 ```
     {
@@ -106,7 +133,7 @@ corpo da requisição:
     }
 ```
 
-5. Requisição necessária para executar o método *settarValor* :
+6. Requisição necessária para executar o método *settarValor* :
 
 ```
     {
@@ -115,7 +142,7 @@ corpo da requisição:
         "args": [
             {
                 "classLocation": "com.example.orch.domain.Compra",
-                "arg": "{idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}"
+                "arg": {idTransacao:0 ,nomeProduto:'nome', valor:'0.0', quantidade:10.0}
             },
             {
                 "classLocation": "java.lang.Double",

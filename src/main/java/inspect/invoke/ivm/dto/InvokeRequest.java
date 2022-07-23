@@ -1,4 +1,4 @@
-package inspect.invoke.ivm.factory;
+package inspect.invoke.ivm.dto;
 
 import lombok.Data;
 
