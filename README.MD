@@ -11,7 +11,7 @@ Invocar métodos através de requisições via REST
     ```
         <dependency>
             <groupId>inspect.invoke</groupId>
-            <artifactId>ivm-controller</artifactId>
+            <artifactId>ivm</artifactId>
             <version>1.0.0</version>
         </dependency>
     ```
