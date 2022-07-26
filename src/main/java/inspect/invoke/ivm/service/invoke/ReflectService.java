@@ -14,13 +14,15 @@ public class ReflectService {
     private final InitBeansService initBeansService;
     private final FindMethodService fIndMethodService;
     private final MapperService mapperService;
+    private final FindParamsService findParamsService;
 
     public Object reflect(List<Object> json, String className, String methodName) {
         Object classObject = findClassObjectService.byClassName(className);
         Class<?> aClass = classObject.getClass();
         initBeansService.init(classObject, aClass);
         MethodData method = fIndMethodService.inClassByName(aClass, methodName);
-        List<Object> params = mapperService.mapperParams(json, method);
+        List<Object> implParams = findParamsService.byImplIn(method);
+        List<Object> params = mapperService.mapperParams(method, json, implParams);
         return method.invoke(classObject, params.toArray());
     }
 }

@@ -1,6 +1,7 @@
 package inspect.invoke.ivm.service.invoke;
 
 import inspect.invoke.ivm.annotation.IvmClass;
+import inspect.invoke.ivm.exception.IvmClassNotFound;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -20,11 +21,6 @@ public class FindClassObjectService {
         DefaultListableBeanFactory dlbf = (DefaultListableBeanFactory) beanFactory;
         Map<String, Object> beans = dlbf.getBeansWithAnnotation(IvmClass.class);
 
-        return beans
-                .keySet()
-                .stream()
-                .filter(key -> beans.get(key).getClass().getName().equals(className))
-                .collect(Collectors.toList())
-                .get(0);
+        return beans.get(className);
     }
 }

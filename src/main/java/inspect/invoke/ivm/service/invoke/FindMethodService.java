@@ -13,13 +13,7 @@ public class FindMethodService {
 
     public MethodData inClassByName(Class<?> aClass, String methodName) {
         Method result = Arrays.stream(aClass.getMethods())
-                .filter(method -> {
-                    IvmMethod gmc = method.getAnnotation(IvmMethod.class);
-                    if (gmc != null) {
-                        return gmc.name().equals(methodName);
-                    }
-                    return false;
-                })
+                .filter(method -> containsIvmMethodWithName(method, methodName))
                 .collect(Collectors.toList())
                 .get(0);
 
@@ -29,5 +23,11 @@ public class FindMethodService {
                 .ivmMethod(result.getAnnotation(IvmMethod.class))
                 .paramTypes(result.getParameterTypes())
                 .build();
+    }
+
+    private boolean containsIvmMethodWithName(Method method, String methodName) {
+        return Arrays.stream(method.getAnnotations())
+                .anyMatch(annotation -> annotation.getClass().getName().equals(IvmMethod.class.getName())
+                    && ((IvmMethod) annotation).name().equals(methodName));
     }
 }

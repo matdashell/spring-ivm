@@ -2,6 +2,7 @@ package inspect.invoke.ivm.service.invoke;
 
 import inspect.invoke.ivm.dto.MethodData;
 import inspect.invoke.ivm.interfaces.IvmObject;
+import inspect.invoke.ivm.util.Utils;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,10 +16,10 @@ import static inspect.invoke.ivm.consts.Consts.DEFAULT_METHOD_NAME_IMPL;
 @Service
 public class FindParamsService {
 
-    public List<Object> inMethod(MethodData methodData) {
+    public List<Object> byImplIn(MethodData methodData) {
         return Arrays.stream(methodData.getMethod().getParameterTypes())
                 .map(aClass -> {
-                    if (implementsIvmObject(aClass)) {
+                    if (Utils.isNotPrimitive(aClass) && implementsIvmObject(aClass)) {
                         return getDefaultObjectImpl(aClass);
                     }
                     return null;

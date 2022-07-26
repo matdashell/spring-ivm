@@ -17,7 +17,6 @@ public class MethodData {
     Method method;
     Class<?>[] paramTypes;
     IvmMethod ivmMethod;
-    List<Object> params;
 
     public Object invoke(Object object, Object[] params) {
         try {

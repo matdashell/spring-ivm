@@ -15,7 +15,7 @@ public class InitBeansService {
 
     private final AutowireCapableBeanFactory beanFactory;
 
-    public void init(Object object, Class<?> aClass) {
+    public void init(Object classObject, Class<?> aClass) {
         List<Field> fields;
         try {
             fields = Arrays.asList(aClass.getDeclaredFields());
@@ -25,10 +25,9 @@ public class InitBeansService {
         fields.forEach(field -> {
             field.setAccessible(true);
             try {
-                if (field.get(object) == null) {
+                if (field.get(classObject) == null) {
                     NamedBeanHolder<?> namedBeanHolder = beanFactory.resolveNamedBean(field.getType());
-                    Object temp = namedBeanHolder.getBeanInstance();
-                    field.set(object, temp);
+                    field.set(classObject, namedBeanHolder.getBeanInstance());
                 }
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
