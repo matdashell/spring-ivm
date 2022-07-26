@@ -13,10 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class MethodData {
 
-    String name;
-    Method method;
-    Class<?>[] paramTypes;
-    IvmMethod ivmMethod;
+    private String name;
+    private Method method;
+    private Class<?>[] paramTypes;
+    private IvmMethod ivmMethod;
 
     public Object invoke(Object object, Object[] params) {
         try {
