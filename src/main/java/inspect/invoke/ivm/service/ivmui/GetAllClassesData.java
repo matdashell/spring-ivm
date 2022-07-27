@@ -27,6 +27,7 @@ public class GetAllClassesData {
                 .collect(Collectors.toList());
     }
 
+    //TODO: 1.1 FRAGMENTAR
     private List<String> getAllMethodsNames(List<Method> methods) {
         return methods.stream()
                 .map(method -> method.getAnnotation(IvmMethod.class).name())

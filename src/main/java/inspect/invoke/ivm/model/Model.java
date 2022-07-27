@@ -1,11 +1,13 @@
 package inspect.invoke.ivm.model;
 
 import inspect.invoke.ivm.interfaces.IvmObject;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Model implements IvmObject {
 
     private String nome;

@@ -34,7 +34,7 @@ public class FindParamsService {
 
     private Object getDefaultObjectImpl(Class<?> aClass) {
         try {
-            Object instance = aClass.getDeclaringClass().getDeclaredConstructor().newInstance();
+            Object instance = aClass.getDeclaredConstructor().newInstance();
             Method method = instance.getClass().getMethod(DEFAULT_METHOD_NAME_IMPL);
             return method.invoke(instance);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |

@@ -25,9 +25,9 @@ public class FindMethodService {
                 .build();
     }
 
+    //TODO: 1.1 FRAGMENTAR
     private boolean containsIvmMethodWithName(Method method, String methodName) {
         return Arrays.stream(method.getAnnotations())
-                .anyMatch(annotation -> annotation.getClass().getName().equals(IvmMethod.class.getName())
-                    && ((IvmMethod) annotation).name().equals(methodName));
+                .anyMatch(annotation -> ((IvmMethod) annotation).name().equals(methodName));
     }
 }

@@ -1,15 +1,17 @@
 package inspect.invoke.ivm.dto;
 
 import inspect.invoke.ivm.annotation.IvmMethod;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.List;
 
-@Builder
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 public class MethodData {
 
